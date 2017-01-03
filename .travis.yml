@@ -1,0 +1,70 @@
+# Travis CI build file
+# will automatically build every push and pull-request to GitHub git-repository.
+
+# environment settings - see https://docs.travis-ci.com/user/ci-environment/
+language: ruby
+git:
+    submodules: true
+# if sudo is disabled this will speed-up building
+#sudo: false
+sudo: required
+# Use more recent Ubuntu Trusty instead of Ubuntu precise (LTS)
+dist: trusty
+# use a C++11/C++14 compiler
+# see http://genbattle.bitbucket.org/blog/2016/01/17/c++-travis-ci/
+# for more information 
+matrix:
+    include:
+    - compiler: gcc
+      addons:
+        apt:
+            sources:
+                - ubuntu-toolchain-r-test
+            packages:
+                - gcc-4.9
+                - g++-4.9
+            env:
+                - COMPILER=g++-4.9
+                - MY_CC=gcc-4.9
+                - MY_CXX=g++-4.9
+before_install:
+    - sudo apt-get update -qq
+    - sudo apt-get install -y libboost-all-dev libogg-dev libvorbis-dev
+    - sudo apt-get install -y libflac-dev libmagic-dev libgtest-dev
+    - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 20 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
+script:
+    # build libEBML
+    - cd lib/libebml
+    - libtoolize
+    - autoreconf -vi
+    - ./configure --prefix=/usr
+    - make
+    - sudo make install
+    - cd ../..
+    # build libMatroska
+    - cd lib/libmatroska
+    - libtoolize
+    - autoreconf -vi
+    - ./configure --prefix=/usr
+    - make
+    - sudo make install
+    - cd ../..
+    # build gtest (Google test framework)
+    - ln -s /usr/src/gtest lib/gtest
+    - cd lib/gtest
+    - sudo cmake CMakeLists.txt
+    - sudo make
+    - sudo cp *.a /usr/lib/
+    - cd ../..
+    # build MKVtoolnix
+    - ./autogen.sh
+    #- export CC=$MY_CC
+    #- export CXX=$MY_CXX
+    #- gcc --version && g++ --version
+    #- echo $CC
+    #- echo $CXX
+    - ./configure --disable-qt --with-tools
+    - ./drake -j2
+    # build and run unit tests
+    - ./drake -j2 --trace 'tests:unit'
+    - ./drake -j2 --trace 'tests:run_unit'
