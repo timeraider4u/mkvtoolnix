@@ -51,7 +51,7 @@
     <addaction name="actionGUIPreferences"/>
     <addaction name="separator"/>
     <addaction name="actionGUIMergeTool"/>
-    <addaction name="actionGUIExtractionTool"/>
+    <addaction name="actionGUIExtractTool"/>
     <addaction name="actionGUIInfoTool"/>
     <addaction name="actionGUIHeaderEditor"/>
     <addaction name="actionGUIChapterEditor"/>
@@ -95,22 +95,22 @@
     <addaction name="actionMergeCopyOutputFileNameToTitle"/>
     <addaction name="actionMergeCopyTitleToOutputFileName"/>
    </widget>
-   <widget class="QMenu" name="menuExtraction">
+   <widget class="QMenu" name="menuExtract">
     <property name="title">
-     <string notr="true">&amp;Extraction</string>
+     <string notr="true">&amp;Extract</string>
     </property>
-    <widget class="QMenu" name="menuExtractionAll">
+    <widget class="QMenu" name="menuExtractAll">
      <property name="title">
       <string>Actions for &amp;all tabs</string>
      </property>
-     <addaction name="actionExtractionCloseAll"/>
+     <addaction name="actionExtractCloseAll"/>
     </widget>
-    <addaction name="actionExtractionOpen"/>
-    <addaction name="actionExtractionReload"/>
+    <addaction name="actionExtractOpen"/>
+    <addaction name="actionExtractReload"/>
     <addaction name="separator"/>
-    <addaction name="actionExtractionClose"/>
+    <addaction name="actionExtractClose"/>
     <addaction name="separator"/>
-    <addaction name="menuExtractionAll"/>
+    <addaction name="menuExtractAll"/>
    </widget>
    <widget class="QMenu" name="menuHeaderEditor">
     <property name="title">
@@ -221,7 +221,7 @@
    </widget>
    <addaction name="menuGUI"/>
    <addaction name="menuMerge"/>
-   <addaction name="menuExtraction"/>
+   <addaction name="menuExtract"/>
    <addaction name="menuHeaderEditor"/>
    <addaction name="menuChapterEditor"/>
    <addaction name="menuJobQueue"/>
@@ -274,7 +274,7 @@
     <string>Sa&amp;ve settings as</string>
    </property>
   </action>
-  <action name="actionExtractionOpen">
+  <action name="actionExtractOpen">
    <property name="icon">
     <iconset resource="../../qt_resources.qrc">
      <normaloff>:/icons/16x16/document-open.png</normaloff>:/icons/16x16/document-open.png</iconset>
@@ -286,7 +286,7 @@
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="actionExtractionClose">
+  <action name="actionExtractClose">
    <property name="icon">
     <iconset resource="../../qt_resources.qrc">
      <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>
@@ -298,7 +298,7 @@
     <string>Ctrl+W</string>
    </property>
   </action>
-  <action name="actionExtractionReload">
+  <action name="actionExtractReload">
    <property name="icon">
     <iconset resource="../../qt_resources.qrc">
      <normaloff>:/icons/16x16/document-revert.png</normaloff>:/icons/16x16/document-revert.png</iconset>
@@ -517,13 +517,13 @@
     <string>Alt+1</string>
    </property>
   </action>
-  <action name="actionGUIExtractionTool">
+  <action name="actionGUIExtractTool">
    <property name="icon">
     <iconset resource="../../qt_resources.qrc">
      <normaloff>:/icons/16x16/split.png</normaloff>:/icons/16x16/split.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Extraction tool</string>
+    <string>&amp;Extract tool</string>
    </property>
    <property name="shortcut">
     <string>Alt+2</string>
@@ -804,7 +804,7 @@
     <string>&amp;Close</string>
    </property>
   </action>
-  <action name="actionExtractionCloseAll">
+  <action name="actionExtractCloseAll">
    <property name="icon">
     <iconset resource="../../qt_resources.qrc">
      <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>

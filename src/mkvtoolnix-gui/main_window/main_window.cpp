@@ -27,6 +27,7 @@
 # include "mkvtoolnix-gui/main_window/taskbar_progress.h"
 #endif
 #include "mkvtoolnix-gui/merge/tool.h"
+#include "mkvtoolnix-gui/extract/tool.h"
 #include "mkvtoolnix-gui/util/cache.h"
 #include "mkvtoolnix-gui/util/file_identifier.h"
 #include "mkvtoolnix-gui/util/message_box.h"
@@ -157,18 +158,18 @@ MainWindow::setupToolSelector() {
   ui->tool->setCurrentIndex(0);
   m_toolMerge->toolShown();
 
-  m_toolSelectionActions << ui->actionGUIMergeTool    /* << ui->actionGUIExtractionTool << ui->actionGUIInfoTool*/
+  m_toolSelectionActions << ui->actionGUIMergeTool    << ui->actionGUIExtractTool //<< ui->actionGUIInfoTool*/
                          << ui->actionGUIHeaderEditor << ui->actionGUIChapterEditor  /*<< ui->actionGUITagEditor*/
                          << ui->actionGUIJobQueue     << ui->actionGUIJobOutput;
 
-  ui->actionGUIExtractionTool->setVisible(false);
+  ui->actionGUIExtractTool->setVisible(false);
   ui->actionGUIInfoTool->setVisible(false);
   ui->actionGUITagEditor->setVisible(false);
 
   auto currentJobTab = m_watchJobTool->currentJobTab();
 
   connect(ui->actionGUIMergeTool,      &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
-  // connect(ui->actionGUIExtractionTool, &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
+  connect(ui->actionGUIExtractTool, &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
   // connect(ui->actionGUIInfoTool,       &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
   connect(ui->actionGUIHeaderEditor,   &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
   connect(ui->actionGUIChapterEditor,  &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
@@ -207,6 +208,7 @@ MainWindow::showTheseMenusOnly(QList<QMenu *> const &menus) {
   showAndEnableMenu(*ui->menuMerge,         menus.contains(ui->menuMerge));
   showAndEnableMenu(*ui->menuHeaderEditor,  menus.contains(ui->menuHeaderEditor));
   showAndEnableMenu(*ui->menuChapterEditor, menus.contains(ui->menuChapterEditor));
+  showAndEnableMenu(*ui->menuExtract, menus.contains(ui->menuExtract));  
   showAndEnableMenu(*ui->menuJobQueue,      menus.contains(ui->menuJobQueue));
   showAndEnableMenu(*ui->menuJobOutput,     menus.contains(ui->menuJobOutput));
 }
@@ -278,6 +280,11 @@ MainWindow::watchJobTool() {
   return get()->m_watchJobTool;
 }
 
+Extract::Tool *
+MainWindow::extractTool() {
+  return get()->m_toolExtract;
+}
+
 void
 MainWindow::retranslateUi() {
   ui->retranslateUi(this);
@@ -301,6 +308,7 @@ MainWindow::retranslateUi() {
   // same form.
   ui->menuGUI          ->setTitle(QY("MKVToolNix &GUI"));
   ui->menuMerge        ->setTitle(QY("&Multiplexer"));
+  ui->menuExtract        ->setTitle(QY("&Extractor"));
   ui->menuHeaderEditor ->setTitle(QY("Header &editor"));
   ui->menuChapterEditor->setTitle(QY("&Chapter editor"));
   ui->menuJobQueue     ->setTitle(QY("&Job queue"));
