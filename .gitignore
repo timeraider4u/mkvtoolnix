@@ -9,6 +9,8 @@
 *.o-[0-9a-f]*
 *~
 .doconf.*
+/CMakeCache.txt
+/CMakeFiles
 /Debug
 /Release
 /autom4te.cache
