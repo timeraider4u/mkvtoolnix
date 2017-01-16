@@ -95,6 +95,23 @@
     <addaction name="actionMergeCopyOutputFileNameToTitle"/>
     <addaction name="actionMergeCopyTitleToOutputFileName"/>
    </widget>
+   <widget class="QMenu" name="menuExtraction">
+    <property name="title">
+     <string notr="true">&amp;Extraction</string>
+    </property>
+    <widget class="QMenu" name="menuExtractionAll">
+     <property name="title">
+      <string>Actions for &amp;all tabs</string>
+     </property>
+     <addaction name="actionExtractionCloseAll"/>
+    </widget>
+    <addaction name="actionExtractionOpen"/>
+    <addaction name="actionExtractionReload"/>
+    <addaction name="separator"/>
+    <addaction name="actionExtractionClose"/>
+    <addaction name="separator"/>
+    <addaction name="menuExtractionAll"/>
+   </widget>
    <widget class="QMenu" name="menuHeaderEditor">
     <property name="title">
      <string notr="true">&amp;Header editor</string>
@@ -204,6 +221,7 @@
    </widget>
    <addaction name="menuGUI"/>
    <addaction name="menuMerge"/>
+   <addaction name="menuExtraction"/>
    <addaction name="menuHeaderEditor"/>
    <addaction name="menuChapterEditor"/>
    <addaction name="menuJobQueue"/>
@@ -254,6 +272,39 @@
    </property>
    <property name="text">
     <string>Sa&amp;ve settings as</string>
+   </property>
+  </action>
+  <action name="actionExtractionOpen">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-open.png</normaloff>:/icons/16x16/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open Matroska file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionExtractionClose">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionExtractionReload">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-revert.png</normaloff>:/icons/16x16/document-revert.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Reload</string>
    </property>
   </action>
   <action name="actionGUIExit">
@@ -745,6 +796,15 @@
    </property>
   </action>
   <action name="actionHeaderEditorCloseAll">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close</string>
+   </property>
+  </action>
+  <action name="actionExtractionCloseAll">
    <property name="icon">
     <iconset resource="../../qt_resources.qrc">
      <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>
