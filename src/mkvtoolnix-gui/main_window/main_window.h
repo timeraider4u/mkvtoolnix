@@ -24,6 +24,9 @@ class Tool;
 namespace HeaderEditor {
 class Tool;
 }
+namespace Extract {
+class Tool;
+}
 namespace Jobs {
 class Tool;
 }
@@ -53,6 +56,7 @@ protected:
   Jobs::Tool *m_toolJobs{};
   HeaderEditor::Tool *m_toolHeaderEditor{};
   ChapterEditor::Tool *m_toolChapterEditor{};
+  Extract::Tool *m_toolExtract{};
   WatchJobs::Tool *m_watchJobTool{};
   QList<QAction *> m_toolSelectionActions;
   std::unique_ptr<Util::MovingPixmapOverlay> m_movingPixmapOverlay;
@@ -105,6 +109,7 @@ public:                         // static
   static Merge::Tool *mergeTool();
   static HeaderEditor::Tool *headerEditorTool();
   static ChapterEditor::Tool *chapterEditorTool();
+  static Extract::Tool *extractTool();
   static Jobs::Tool *jobTool();
   static WatchJobs::Tab *watchCurrentJobTab();
   static WatchJobs::Tool *watchJobTool();
