@@ -15,3 +15,4 @@ find_package(Ogg REQUIRED)
 find_package(Vorbis REQUIRED)
 
 include(CheckUtf8Cpp)
+include(CheckBoost)

@@ -1,4 +1,5 @@
 # coding: utf-8  
 
-message ("	BUILD_TOOLS		${BUILD_TOOLS}")
-
+message (STATUS "	BUILD_STATIC		${BUILD_STATIC}")
+message (STATUS "	BUILD_TOOLS		${BUILD_TOOLS}")
+message (STATUS "	UTF8CPP_INTERNAL	${UTF8CPP_INTERNAL}")
