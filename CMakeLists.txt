@@ -10,10 +10,12 @@
 
 project(MKVToolNix)
 
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.1)
 
 # enable C++11 standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # set build type
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
@@ -28,6 +30,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(Config)
 
+include(Checking)
+include(Options)
+
 message("")
 message("${${PROJECT_NAME}_NAME} v${${PROJECT_NAME}_VERSION}")
 message("Copyright (C) ${${PROJECT_NAME}_YEAR} ${${PROJECT_NAME}_AUTHOR}")
@@ -35,3 +40,5 @@ message("${${PROJECT_NAME}_URL}")
 message("")
 message("Please report any issues under ${${PROJECT_NAME}_BUGREPORT}")
 message("")
+
+include(OptionsOutput)

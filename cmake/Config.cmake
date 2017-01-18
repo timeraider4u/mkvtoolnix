@@ -1,12 +1,5 @@
 # coding: utf-8
 
-## 
-## Copyright (C) 2017 - Harald Weiner (harald.weiner@jku.at)
-## This file is distributed under the same license as the mkvtoolnix package.
-## 
-## https://github.com/mbunkus/mkvtoolnix
-######################################################################
-
 set (${PROJECT_NAME}_NAME "MKVToolNix")
 set (${PROJECT_NAME}_AUTHOR "Moritz Bunkus <moritz@bunkus.org>")
 set (${PROJECT_NAME}_URL "https://mkvtoolnix.download/")
