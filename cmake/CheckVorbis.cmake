@@ -1,12 +1,11 @@
 # coding: utf-8
 
-find_package(ZLIB REQUIRED)
 set(${PROJECT_NAME}_COMPILER_MSG
-	"Could not find zlib. CMake will exit now.")
+	"Could not find zlib library. CMake will exit now.")
+include(FindZLIB)
 if (NOT ZLIB_FOUND)
 	message(FATAL_ERROR ${${PROJECT_NAME}_COMPILER_MSG})
 endif (NOT ZLIB_FOUND)
-
 include(CheckCXXSourceCompiles)
 set(CMAKE_REQUIRED_INCLUDES ${ZLIB_INCLUDE_DIRS})
 set(CMAKE_REQUIRED_LIBRARIES ${ZLIB_LIBRARIES})
