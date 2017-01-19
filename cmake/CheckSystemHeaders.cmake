@@ -4,10 +4,10 @@
 INCLUDE(CheckIncludeFiles)
 SET(${PROJECT_NAME}_SYS_INC_FILES "inttypes.h" "stdint.h" "sys/types.h"
 	"sys/syscall.h" "stropts.h")
-CHECK_INCLUDE_FILES(${${PROJECT_NAME}_${SYS_INC_FILES}} HAVE_SYS_HEADER)
+CHECK_INCLUDE_FILES("${${PROJECT_NAME}_SYS_INC_FILES}" HAVE_SYS_HEADER)
 IF (NOT HAVE_SYS_HEADER)
 	message(FATAL_ERROR 
-	"Could not find system header '${SYS_HEADER}'! CMake will exit now.")
+	"Could not find system header '${${PROJECT_NAME}_SYS_INC_FILES}'! CMake will exit now.")
 ENDIF (NOT HAVE_SYS_HEADER)
 
 # check that certain system functions exist

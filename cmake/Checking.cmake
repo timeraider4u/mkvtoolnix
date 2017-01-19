@@ -1,8 +1,9 @@
 # coding: utf-8
 
+# TODO: uncomment again
 #include(CheckCXXFeatures) 
 #include(CheckSystemHeaders)
-# TODO: implement properly include(CheckIntTypes)
+#include(CheckIntTypes)
 
 find_package(PkgConfig)
 if(NOT PKG_CONFIG_FOUND)
