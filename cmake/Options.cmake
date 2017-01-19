@@ -10,3 +10,10 @@ option(BUILD_STATIC
 	false)
 	# TODO: LINK_STATICALLY=" -static "
 
+option(WITH_WORDS_BIG
+	"set big-endianness"
+	false)
+
+option(WITH_WORDS_LITTLE
+	"set little-endianness"
+	false)

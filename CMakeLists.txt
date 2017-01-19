@@ -33,6 +33,8 @@ include(Config)
 include(Checking)
 include(Options)
 
+include(Endianness)
+
 message("")
 message("${${PROJECT_NAME}_NAME} v${${PROJECT_NAME}_VERSION}")
 message("Copyright (C) ${${PROJECT_NAME}_YEAR} ${${PROJECT_NAME}_AUTHOR}")
@@ -42,3 +44,4 @@ message("Please report any issues under ${${PROJECT_NAME}_BUGREPORT}")
 message("")
 
 include(OptionsOutput)
+message("")
