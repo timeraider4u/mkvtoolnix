@@ -34,6 +34,7 @@ include(Checking)
 include(Options)
 
 include(Endianness)
+include(PanDoc)
 
 message("")
 message("${${PROJECT_NAME}_NAME} v${${PROJECT_NAME}_VERSION}")
