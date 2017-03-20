@@ -2,6 +2,7 @@
 #define MTX_MKVTOOLNIX_GUI_EXTRACTION_TOOL_TAB_H
 
 #include "common/common_pch.h"
+#include "common/qt_kax_analyzer.h"
 
 #include "mkvtoolnix-gui/extraction_tool/attachment_model.h"
 #include "mkvtoolnix-gui/types.h"
@@ -35,6 +36,7 @@ protected:
   std::unique_ptr<Ui::Tab> ui;
 
   QString m_fileName, m_originalFileName;
+  std::unique_ptr<QtKaxAnalyzer> m_analyzer;
 
   AttachmentModel *m_attachmentModel;
 
@@ -58,7 +60,6 @@ signals:
 
 public slots:
   virtual void load();
-  virtual void save();
 
   virtual void closeTab();
 

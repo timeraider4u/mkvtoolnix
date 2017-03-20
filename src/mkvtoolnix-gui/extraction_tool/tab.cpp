@@ -113,11 +113,18 @@ Tab::enableNameWidgets(bool enable) {
 }
 
 
-// bool
-// Tab::isSourceMatroska()
-//   const {
-//   return !!m_analyzer;
-// }
+bool
+Tab::isSourceMatroska()
+  const {
+  return !!m_analyzer;
+}
+
+void
+Tab::resetData() {
+  m_analyzer.reset();
+  //m_nameModel->reset();
+  //m_attachmentModel->reset();
+}
 
 bool
 Tab::hasBeenModified()
