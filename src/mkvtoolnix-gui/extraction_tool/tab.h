@@ -35,15 +35,9 @@ protected:
   std::unique_ptr<Ui::Tab> ui;
 
   QString m_fileName, m_originalFileName;
-  //std::unique_ptr<QtKaxAnalyzer> m_analyzer;
-  //QDateTime m_fileModificationTime;
 
-  //NameModel *m_nameModel;
   AttachmentModel *m_attachmentModel;
 
- // QAction *m_expandAllAction, *m_collapseAllAction, *m_addEditionBeforeAction, *m_addEditionAfterAction, *m_addChapterBeforeAction,
-  // *m_addChapterAfterAction, *m_addSubChapterAction, *m_removeElementAction;
-  //QAction *m_duplicateAction, *m_massModificationAction, *m_generateSubChaptersAction, *m_renumberSubChaptersAction;
   QList<QWidget *> m_nameWidgets;
 
   QString m_savedState;
@@ -55,8 +49,6 @@ public:
   virtual void retranslateUi();
   virtual QString const &fileName() const;
   virtual QString title() const;
-  virtual bool hasChapters() const;
-  virtual bool hasBeenModified() const;
   virtual bool areWidgetsEnabled() const;
   virtual bool isSourceMatroska() const;
 
@@ -75,7 +67,7 @@ protected:
   void resetData();
   //void expandCollapseAll(bool expand, QModelIndex const &parentIdx = {});
 
-  LoadResult loadFromMatroskaFile();
+  //LoadResult loadFromMatroskaFile();
   
   void updateFileNameDisplay();
 
