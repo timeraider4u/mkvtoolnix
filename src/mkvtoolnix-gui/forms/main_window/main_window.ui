@@ -144,6 +144,23 @@
     <addaction name="separator"/>
     <addaction name="actionChapterEditorRemoveFromMatroska"/>
    </widget>
+   <widget class="QMenu" name="menuExtractionTool">
+    <property name="title">
+     <string notr="true">&amp;Extraction tool</string>
+    </property>
+    <widget class="QMenu" name="menuExtractionToolAll">
+     <property name="title">
+      <string>Actions for &amp;all tabs</string>
+     </property>
+     <addaction name="actionExtractionToolCloseAll"/>
+    </widget>
+    <addaction name="actionExtractionToolOpen"/>
+    <addaction name="actionExtractionToolReload"/>
+    <addaction name="separator"/>
+    <addaction name="actionExtractionToolClose"/>
+    <addaction name="separator"/>
+    <addaction name="menuExtractionToolAll"/>
+   </widget>
    <widget class="QMenu" name="menuJobOutput">
     <property name="title">
      <string notr="true">Job o&amp;utput</string>
@@ -206,6 +223,7 @@
    <addaction name="menuMerge"/>
    <addaction name="menuHeaderEditor"/>
    <addaction name="menuChapterEditor"/>
+   <addaction name="menuExtractionTool"/>
    <addaction name="menuJobQueue"/>
    <addaction name="menuJobOutput"/>
    <addaction name="menuHelp"/>
@@ -452,6 +470,48 @@
    </property>
    <property name="text">
     <string>&amp;Reload</string>
+   </property>
+  </action>
+  <action name="actionExtractionToolOpen">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-open.png</normaloff>:/icons/16x16/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open Matroska file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionExtractionToolClose">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close Matroska file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionExtractionToolReload">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-revert.png</normaloff>:/icons/16x16/document-revert.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Reload Matroska file</string>
+   </property>
+  </action>
+  <action name="actionExtractionToolCloseAll">
+   <property name="icon">
+    <iconset resource="../../qt_resources.qrc">
+     <normaloff>:/icons/16x16/document-close.png</normaloff>:/icons/16x16/document-close.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Close</string>
    </property>
   </action>
   <action name="actionGUIMergeTool">

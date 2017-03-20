@@ -16,6 +16,7 @@
 #include "common/version.h"
 #include "mkvtoolnix-gui/app.h"
 #include "mkvtoolnix-gui/chapter_editor/tool.h"
+#include "mkvtoolnix-gui/extraction_tool/tool.h"
 #include "mkvtoolnix-gui/forms/main_window/main_window.h"
 #include "mkvtoolnix-gui/header_editor/tool.h"
 #include "mkvtoolnix-gui/jobs/tool.h"
@@ -138,7 +139,7 @@ MainWindow::setupToolSelector() {
   m_watchJobTool      = new WatchJobs::Tool{ui->tool,     ui->menuJobOutput};
 
   ui->tool->appendTab(m_toolMerge,                  QIcon{":/icons/48x48/merge.png"},                      QY("Multiplexer"));
-  // ui->tool->appendTab(createNotImplementedWidget(), QIcon{":/icons/48x48/split.png"},                      QY("Extractor"));
+  ui->tool->appendTab(m_toolExtractionTool, 		QIcon{":/icons/48x48/mail-attachment.png"},            QY("Extractor"));
   // ui->tool->appendTab(createNotImplementedWidget(), QIcon{":/icons/48x48/document-preview-archive.png"},   QY("Info tool"));
   ui->tool->appendTab(m_toolHeaderEditor,           QIcon{":/icons/48x48/document-edit.png"},              QY("Header editor"));
   ui->tool->appendTab(m_toolChapterEditor,          QIcon{":/icons/48x48/story-editor.png"},               QY("Chapter editor"));
@@ -157,18 +158,18 @@ MainWindow::setupToolSelector() {
   ui->tool->setCurrentIndex(0);
   m_toolMerge->toolShown();
 
-  m_toolSelectionActions << ui->actionGUIMergeTool    /* << ui->actionGUIExtractionTool << ui->actionGUIInfoTool*/
+  m_toolSelectionActions << ui->actionGUIMergeTool    << ui->actionGUIExtractionTool /*<< ui->actionGUIInfoTool*/
                          << ui->actionGUIHeaderEditor << ui->actionGUIChapterEditor  /*<< ui->actionGUITagEditor*/
                          << ui->actionGUIJobQueue     << ui->actionGUIJobOutput;
 
-  ui->actionGUIExtractionTool->setVisible(false);
+  //ui->actionGUIExtractionTool->setVisible(false);
   ui->actionGUIInfoTool->setVisible(false);
   ui->actionGUITagEditor->setVisible(false);
 
   auto currentJobTab = m_watchJobTool->currentJobTab();
 
   connect(ui->actionGUIMergeTool,      &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
-  // connect(ui->actionGUIExtractionTool, &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
+  connect(ui->actionGUIExtractionTool, &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
   // connect(ui->actionGUIInfoTool,       &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
   connect(ui->actionGUIHeaderEditor,   &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
   connect(ui->actionGUIChapterEditor,  &QAction::triggered,                                    this,                &MainWindow::changeToolToSender);
@@ -207,6 +208,7 @@ MainWindow::showTheseMenusOnly(QList<QMenu *> const &menus) {
   showAndEnableMenu(*ui->menuMerge,         menus.contains(ui->menuMerge));
   showAndEnableMenu(*ui->menuHeaderEditor,  menus.contains(ui->menuHeaderEditor));
   showAndEnableMenu(*ui->menuChapterEditor, menus.contains(ui->menuChapterEditor));
+  showAndEnableMenu(*ui->menuExtractionTool, menus.contains(ui->menuExtractionTool));
   showAndEnableMenu(*ui->menuJobQueue,      menus.contains(ui->menuJobQueue));
   showAndEnableMenu(*ui->menuJobOutput,     menus.contains(ui->menuJobOutput));
 }
@@ -263,6 +265,11 @@ MainWindow::chapterEditorTool() {
   return get()->m_toolChapterEditor;
 }
 
+ExtractionTool::Tool *
+MainWindow::extractionToolTool() {
+  return get()->m_toolExtractionTool;
+}
+
 Jobs::Tool *
 MainWindow::jobTool() {
   return get()->m_toolJobs;
@@ -303,6 +310,7 @@ MainWindow::retranslateUi() {
   ui->menuMerge        ->setTitle(QY("&Multiplexer"));
   ui->menuHeaderEditor ->setTitle(QY("Header &editor"));
   ui->menuChapterEditor->setTitle(QY("&Chapter editor"));
+  ui->menuExtractionTool->setTitle(QY("&ExtractionTool"));
   ui->menuJobQueue     ->setTitle(QY("&Job queue"));
   ui->menuJobOutput    ->setTitle(QY("&Job output"));
   ui->menuHelp         ->setTitle(QY("&Help"));
